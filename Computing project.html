@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Chop Ghana | Ghanaian Restaurant</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: white;
+    }
+
+    /* NAVIGATION */
+    header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #08783e;
+    }
+
+    .logo span {
+      color: #f4b400;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #b51f2b;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,0.6),
+          rgba(0,0,0,0.6)
+        ),
+        url("https://www.ghanayello.com/img/gh/k/1429026309-61-the-buka.jpg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 750px;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .btn-primary {
+      background: #f4b400;
+      color: black;
+    }
+
+    .btn-secondary {
+      border: 2px solid white;
+      color: white;
+    }
+
+    /* GENERAL SECTIONS */
+    section {
+      padding: 70px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      color: #08783e;
+      font-size: 38px;
+    }
+
+    .section-title p {
+      color: #666;
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .about h2 {
+      color: #08783e;
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .feature {
+      background: #fff8e8;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .feature strong {
+      display: block;
+      color: #b51f2b;
+      margin-bottom: 5px;
+    }
+
+    /* MENU */
+    #menu {
+      background: #f8f8f8;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .food-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .food-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .food-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .food-info {
+      padding: 20px;
+    }
+
+    .food-info h3 {
+      color: #08783e;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #b51f2b;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    /* GALLERY */
+    .gallery {
+      background: #fff8e8;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 15px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .gallery-grid img:first-child {
+      height: 475px;
+      grid-row: span 2;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #08783e;
+      color: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contact h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box {
+      background: white;
+      color: #222;
+      padding: 25px;
+      border-radius: 15px;
+    }
+
+    .contact-box h3 {
+      color: #08783e;
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      margin: 10px 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #063d21;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-grid img:first-child {
+        grid-column: span 2;
+        grid-row: auto;
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid img:first-child {
+        grid-column: auto;
+      }
+
+      .hero h1 {
+        font-size: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav>
+
+      <div class="logo">
+        Chop <span>Ghana</span> 🇬🇭
+      </div>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Photos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+
+  <!-- HOME -->
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>
+        Good Food.<br>
+        Good Vibes.<br>
+        Ghanaian Style.
+      </h1>
+
+      <p>
+        Welcome to Chop Ghana in Ablekuma, Accra.
+        Enjoy delicious jollof, waakye, banku and tilapia,
+        fufu and other authentic Ghanaian dishes.
+      </p>
+
+      <a href="#menu" class="btn btn-primary">
+        View Our Menu
+      </a>
+
+      <a href="#contact" class="btn btn-secondary">
+        Contact Us
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <div class="container">
+
+      <div class="about">
+
+        <img
+          src="https://static.wixstatic.com/media/1e3694_f7d5c8124940438ab2533a09799dd357~mv2.jpeg/v1/fill/w_980,h_980,al_c,q_85/1e3694_f7d5c8124940438ab2533a09799dd357~mv2.jpeg"
+          alt="Ghanaian food"
+        >
+
+        <div>
+
+          <h2>Made With The Taste Of Home</h2>
+
+          <p>
+            At Chop Ghana, we believe Ghanaian food should be
+            delicious, filling and made with care.
+            From our rich tomato jollof to freshly grilled
+            tilapia, every plate is prepared to give you
+            that familiar taste of home.
+          </p>
+
+          <div class="features">
+
+            <div class="feature">
+              <strong>🍲 Fresh Daily</strong>
+              Meals prepared fresh every day.
+            </div>
+
+            <div class="feature">
+              <strong>🇬🇭 Local Flavour</strong>
+              Authentic Ghanaian recipes.
+            </div>
+
+            <div class="feature">
+              <strong>🛵 Easy Ordering</strong>
+              Call or message us for your order.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MENU -->
+  <section id="menu">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>Our Popular Menu</h2>
+
+        <p>
+          Delicious Ghanaian meals made for you.
+        </p>
+
+      </div>
+
+
+      <div class="menu-grid">
+
+
+        <!-- JOLLOF -->
+        <div class="food-card">
+
+          <img
+            src="https://www.ghanayello.com/img/gh/k/1429026309-61-the-buka.jpg"
+            alt="Ghana Jollof"
+          >
+
+          <div class="food-info">
+
+            <h3>Ghana Jollof & Chicken</h3>
+
+            <p>
+              Smoky jollof served with chicken,
+              salad and shito.
+            </p>
+
+            <div class="price">
+              GH₵ 50
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- WAAKYE -->
+        <div class="food-card">
+
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/63d597ad4f536a40da6e2e8e/77d2546d-8bb9-40b3-8d4a-bdac0f9d36e4/Dawn%2Bwaakye.JPG"
+            alt="Waakye"
+          >
+
+          <div class="food-info">
+
+            <h3>Waakye Special</h3>
+
+            <p>
+              Waakye with egg, spaghetti,
+              gari, shito and protein.
+            </p>
+
+            <div class="price">
+              GH₵ 45
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- BANKU -->
+        <div class="food-card">
+
+          <img
+            src="https://www.pinterest.ca/pin/18225573486601838/"
+            alt="Banku and Tilapia"
+          >
+
+          <div class="food-info">
+
+            <h3>Banku & Tilapia</h3>
+
+            <p>
+              Grilled tilapia with soft banku,
+              pepper and vegetables.
+            </p>
+
+            <div class="price">
+              GH₵ 75
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FUFU -->
+        <div class="food-card">
+
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/63d597ad4f536a40da6e2e8e/c1081254-d611-4402-a5be-b62dc880eb16/IMG_2450.JPG"
+            alt="Ghanaian food"
+          >
+
+          <div class="food-info">
+
+            <h3>Fufu & Soup</h3>
+
+            <p>
+              Soft fufu served with your choice
+              of delicious Ghanaian soup.
+            </p>
+
+            <div class="price">
+              GH₵ 60
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FAMILY PACK -->
+        <div class="food-card">
+
+          <img
+            src="https://www.accrarestaurantinc.com/assets/WAAKYE-BVgImUx-.jpg"
+            alt="Waakye family pack"
+          >
+
+          <div class="food-info">
+
+            <h3>Waakye Family Pack</h3>
+
+            <p>
+              A generous serving for family
+              and friends.
+            </p>
+
+            <div class="price">
+              GH₵ 120
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- FISH -->
+        <div class="food-card">
+
+          <img
+            src="https://www.ghanayello.com/img/gh/k/1429026309-61-the-buka.jpg"
+            alt="Grilled fish"
+          >
+
+          <div class="food-info">
+
+            <h3>Grilled Fish Special</h3>
+
+            <p>
+              Fresh grilled fish served with
+              vegetables and spicy pepper.
+            </p>
+
+            <div class="price">
+              GH₵ 70
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>Food Gallery</h2>
+
+        <p>
+          A taste of what is waiting for you.
+        </p>
+
+      </div>
+
+      <div class="gallery-grid">
+
+        <img
+          src="https://www.ghanayello.com/img/gh/k/1429026309-61-the-buka.jpg"
+          alt="Jollof"
+        >
+
+        <img
+          src="https://static.wixstatic.com/media/1e3694_f7d5c8124940438ab2533a09799dd357~mv2.jpeg/v1/fill/w_980,h_980,al_c,q_85/1e3694_f7d5c8124940438ab2533a09799dd357~mv2.jpeg"
+          alt="Ghanaian food"
+        >
+
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/63d597ad4f536a40da6e2e8e/77d2546d-8bb9-40b3-8d4a-bdac0f9d36e4/Dawn%2Bwaakye.JPG"
+          alt="Waakye"
+        >
+
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/63d597ad4f536a40da6e2e8e/c1081254-d611-4402-a5be-b62dc880eb16/IMG_2450.JPG"
+          alt="Ghanaian meal"
+        >
+
+        <img
+          src="https://www.ghanayello.com/img/gh/k/1429026309-61-the-buka.jpg"
+          alt="Restaurant food"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+
+    <div class="container">
+
+      <div class="contact-grid">
+
+        <div>
+
+          <h2>Come Chop With Us 🇬🇭</h2>
+
+          <p>
+            Visit us in Ablekuma, Accra for delicious
+            Ghanaian food and great vibes.
+          </p>
+
+          <br>
+
+          <p>
+            📍 <strong>Location:</strong>
+            Ablekuma, Accra, Ghana
+          </p>
+
+          <p>
+            📞 <strong>Phone:</strong>
+            +233 24 000 0000
+          </p>
+
+          <p>
+            🕘 <strong>Opening Hours:</strong>
+            9:00 AM – 10:00 PM
+          </p>
+
+        </div>
+
+
+        <div class="contact-box">
+
+          <h3>Place An Order</h3>
+
+          <p>
+            Order your favourite Ghanaian meal
+            through WhatsApp.
+          </p>
+
+          <br>
+
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/233240000000"
+          >
+            Order on WhatsApp
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <p>
+      © 2026 Chop Ghana
+    </p>
+
+    <p>
+      Authentic Ghanaian Food • Ablekuma • Accra 🇬🇭
+    </p>
+
+  </footer>
+
+</body>
+</html>
